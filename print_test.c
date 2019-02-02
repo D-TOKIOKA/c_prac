@@ -8,7 +8,11 @@ void print_test(int val){
 
 #else
 
+#define PRINT(a) printf(a)
+
 void print_test(int val){
+  PRINT("TEST\n");
+
   printf("normal mode=[%d]\n", val);
 }
 
