@@ -9,7 +9,7 @@ void print_test(int val){
 #else
 
 void print_test(int val){
-  printf("input val=[%d]\n", val);
+  printf("normal mode=[%d]\n", val);
 }
 
 #endif
