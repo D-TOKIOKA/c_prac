@@ -1,4 +1,4 @@
-# test  
+# c_prac  
 ## C言語練習  
 
 * #ifdef~#endif  
