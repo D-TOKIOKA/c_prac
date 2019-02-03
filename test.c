@@ -14,7 +14,9 @@ void main(){
   ts.a = 10;
   ts.b = 20;
   ts.c = 30;
-  strcpy(ts.d, "TEST");
+  strcpy(ts.d, "TEST\0");
+  ts.ts1.a1 = 100;
+  strcpy(ts.ts1.buf, "REST\0");
   print_struct(&ts);
 
 }

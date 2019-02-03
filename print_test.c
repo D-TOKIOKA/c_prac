@@ -22,6 +22,8 @@ void print_struct(struct test_struct *ts) {
     printf("b = %d\n", ts->b);
     printf("c = %d\n", ts->c);
     printf("d = %s\n", ts->d);
+    printf("ts1.a1 = %d\n", ts->ts1.a1);
+    printf("ts1.buf = %s\n", ts->ts1.buf);
 }
 
 
