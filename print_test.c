@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include "print_test.h"
 
 #ifdef TEST
 
@@ -15,5 +16,13 @@ void print_test(int val){
 
   printf("normal mode=[%d]\n", val);
 }
+
+void print_struct(struct test_struct *ts) {
+    printf("a = %d\n", ts->a);
+    printf("b = %d\n", ts->b);
+    printf("c = %d\n", ts->c);
+    printf("d = %s\n", ts->d);
+}
+
 
 #endif
