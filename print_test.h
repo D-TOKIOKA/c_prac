@@ -1,6 +1,6 @@
-#ifndef PRINT_TEST
+#ifndef __PRINT_TEST__
 
-#define PRINT_TEST
+#define __PRINT_TEST__
 
 void print_test(int val);
 
