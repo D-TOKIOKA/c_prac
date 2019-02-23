@@ -1,8 +1,21 @@
 #include <stdio.h>
 #include "print_test.h"
 #include <string.h>
+#include <pthread.h>
+
+void *test_func(void *param) {
+  pthread_t thread_id;
+  struct test_struct *ts = (struct test_struct *)param;
+
+  thread_id = pthread_self();
+  PRAC_PRINT("thread_ID=%ld\n", thread_id);
+  ts->a = 100;
+  print_struct(ts);
+}
 
 void main(){
+  pthread_t thread;
+  int pid;
   struct test_struct ts;
 
   printf("Hello World""\n");
@@ -19,4 +32,6 @@ void main(){
   strcpy(ts.ts1.buf, "REST\0");
   print_struct(&ts);
 
+  pthread_create(&thread, NULL, test_func, &ts);
+  pthread_join(thread, NULL);
 }
