@@ -2,6 +2,8 @@
 
 #define __PRINT_TEST__
 
+#define PRAC_PRINT printf
+
 struct test_st {
   int a1;
   char buf[100];
