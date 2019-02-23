@@ -3,6 +3,8 @@
 #include <string.h>
 #include <pthread.h>
 
+pthread_mutex_t test_mutex = PTHREAD_MUTEX_INITIALIZER;
+
 void *test_func1(void *param) {
   pthread_t thread_id;
   int i;
@@ -10,10 +12,16 @@ void *test_func1(void *param) {
 
   thread_id = pthread_self();
   PRAC_PRINT("thread_ID=%ld\n", thread_id);
+
+  pthread_mutex_lock(&test_mutex);
+
   for(i = 0; i < 10000000; i++) {
     ts->a -= 1;
     ts->b -= 1;
   }
+
+  pthread_mutex_unlock(&test_mutex);
+
 }
 
 void *test_func2(void *param) {
@@ -23,16 +31,24 @@ void *test_func2(void *param) {
 
   thread_id = pthread_self();
   PRAC_PRINT("thread_ID=%ld\n", thread_id);
+
+  pthread_mutex_lock(&test_mutex);
+
   for(i = 0; i < 10000000; i++) {
     ts->a += 2;
     ts->b += 2;
   }
+
+  pthread_mutex_unlock(&test_mutex);
+
 }
 
 void main(){
   pthread_t thread1;
   pthread_t thread2;
   struct test_struct ts;
+
+  pthread_mutex_init(&test_mutex, NULL);
 
   printf("Hello World""\n");
   print_test(10);
@@ -55,4 +71,6 @@ void main(){
   pthread_join(thread2, NULL);
 
   print_struct(&ts);
+
+  pthread_mutex_destroy(&test_mutex);
 }
